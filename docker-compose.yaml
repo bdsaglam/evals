@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  localstack:
+    container_name: "localstack-snowflake"
+    image: localstack/snowflake
+    ports:
+      - "127.0.0.1:4566:4566"
+      - "127.0.0.1:4510-4559:4510-4559"
+      # Port 443 is mapped for HTTPS connections to the localstack Snowflake service
+      # This allows secure connections to the mock Snowflake database
+      - "127.0.0.1:443:443"
+    environment:
+      - LOCALSTACK_AUTH_TOKEN=${LOCALSTACK_AUTH_TOKEN:?}
+    volumes:
+      - "./volume:/var/lib/localstack"

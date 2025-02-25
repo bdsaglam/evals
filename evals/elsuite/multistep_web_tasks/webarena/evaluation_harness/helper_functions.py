@@ -1,4 +1,5 @@
 """Implements helper functions to assist evaluation cases where other evaluators are not suitable."""
+
 import json
 from typing import Any
 from urllib.parse import urlparse
@@ -149,7 +150,8 @@ def llm_fuzzy_match(pred: str, reference: str, question: str) -> float:
 
     # NOTE: untested
     completion_fn = OpenAIChatCompletionFn(
-        model="gpt-3.5-turbo", extra_options={"temperature": 0, "top_p": 1, "max_tokens": 16}
+        model="gpt-3.5-turbo",
+        extra_options={"temperature": 0, "top_p": None, "max_tokens": 16},
     )
     response = completion_fn(messages)
     response = response.get_completions()[0]

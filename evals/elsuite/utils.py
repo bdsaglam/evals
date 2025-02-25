@@ -184,7 +184,7 @@ class PromptFn:
             prompt=prompt,
             max_tokens=self.max_tokens,
             temperature=self.temperature,
-            top_p=1,
+            top_p=None,
             frequency_penalty=0,
             presence_penalty=0,
             n=(1 if self.n_samples is None else self.n_samples),
